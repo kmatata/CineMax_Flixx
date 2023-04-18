@@ -12,8 +12,7 @@ services:
       - mongo
       - redis
       - rabbitmq
-    env_file:
-      - .env.dev
+    
 
   db:
     image: postgres
