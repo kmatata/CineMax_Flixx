@@ -13,7 +13,7 @@ from django.core import serializers
 import json
 from bson import ObjectId
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://mongo:27017/')
 db = client['cinemania']
 
 router = Router()
