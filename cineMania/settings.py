@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-rqaa2)^2l$d1(e)b3vm%6v72w9%el9euvvt)hic7muv3-i2&fs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 
 # Application definition
@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'cineMania.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cinemania_db',
-        'USER': 'postgres',
+        'USER': 'cimemax',
         'PASSWORD': 'postgres',
         'HOST': 'db',
-        'PORT': '5432',
+        'PORT': 5432,
     }
 }
 

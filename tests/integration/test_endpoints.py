@@ -10,7 +10,7 @@ def test_create_movie():
         "name": "Rick and Morty",
         "protagonists": "Rick Sanchez",
         "poster": "image.jpg",
-        "start_date": "2020-06-10 12:00:00",
+        "start_date": "2023-05-19 22:21:16",
         "status": "coming-up",
         "ranking": 0
     }
@@ -21,7 +21,7 @@ def test_create_movie():
 @pytest.mark.integration
 def test_get_movies():
     client = APIClient()
-    Movie.objects.create(name="Rick and Morty", protagonists="Rick Sanchez", poster="image.jpg", start_date="2020-06-10 12:00:00", status="coming-up", ranking=0)
+    Movie.objects.create(name="Rick and Morty", protagonists="Rick Sanchez", poster="image.jpg", start_date="2023-05-19 22:21:16", status="coming-up", ranking=0)
     response = client.get("/movies")
     assert response.status_code == status.HTTP_200_OK
     assert len(response.json()) == 1
@@ -30,7 +30,7 @@ def test_get_movies():
 @pytest.mark.integration
 def test_delete_movie():
     client = APIClient()
-    movie = Movie.objects.create(name="Rick and Morty", protagonists="Rick Sanchez", poster="image.jpg", start_date="2020-06-10 12:00:00", status="coming-up", ranking=0)
+    movie = Movie.objects.create(name="Rick and Morty", protagonists="Rick Sanchez", poster="image.jpg", start_date="2023-05-19 22:21:16", status="coming-up", ranking=0)
     response = client.delete(f"/movies/{movie.id}")
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == {"message": f"Movie {movie.id} deleted successfully."}
@@ -40,8 +40,8 @@ def test_delete_movie():
 @pytest.mark.integration
 def test_get_trending_movies():
     client = APIClient()
-    Movie.objects.create(name="Rick and Morty", protagonists="Rick Sanchez", poster="image.jpg", start_date="2022-11-11 12:00:00", status="running", ranking=20)
-    Movie.objects.create(name="No Country For Old Men", protagonists="Llewelyn Moss", poster="image.jpg", start_date="2007-11-12 12:00:00", status="running", ranking=10)
+    Movie.objects.create(name="Rick and Morty", protagonists="Rick Sanchez", poster="image.jpg", start_date="2023-05-19 22:21:16", status="running", ranking=20)
+    Movie.objects.create(name="No Country For Old Men", protagonists="Llewelyn Moss", poster="image.jpg", start_date="2023-05-19 22:21:16", status="running", ranking=10)
     response = client.get("/trending_movies")
     assert response.status_code == status.HTTP_200_OK
     movies = response.json()

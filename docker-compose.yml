@@ -1,35 +1,42 @@
-version: '3'
+
 
 services:
   webapi:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: 
+      context: ./
+      dockerfile: Dockerfile     
+    restart: always
+    command: ["db:5432","--","python", "/usr/src/app/manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - ./:/usr/src/app/
     ports:
       - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=cineMania.settings 
+      - POSTGRES_USER = cinemax
+      - POSTGRES_PASSWORD = postgres
+      - POSTGRES_DB = cinemania_db
     depends_on:
       - db
-      - mongo
-      - redis
+      - mongo      
       - rabbitmq
     
 
   db:
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: cinemania_db
+    image: postgres:14.6 
+    restart: always   
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER = cinemax
+      - POSTGRES_PASSWORD = postgres
+      - POSTGRES_DB = cinemania_db    
 
   mongo:
     image: mongo
     volumes:
       - mongo_data:/data/db
 
-  redis:
-    image: redis
 
   rabbitmq:
     image: rabbitmq:3-management

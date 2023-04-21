@@ -11,7 +11,7 @@ def test_create_movie(mocker):
         "name": "Matrix",
         "protagonists": "Keanu Reeves",
         "poster": poster_mock,
-        "start_date": "2022-11-11 12:00:00",
+        "start_date": "2023-05-19 22:21:16",
         "status": "coming-up",
         "ranking": 0
     }
