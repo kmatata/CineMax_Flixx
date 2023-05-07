@@ -12,3 +12,4 @@ The program is a generally of a movie ranking platform "Cinemania" and performs 
 The program utilizes various modules and libraries such as datetime, pymongo, Django, Celery, pydantic, and more to handle data manipulation, serialization, and API endpoints.
 
 Running:
+To start the program, run the following command in the directory where the YAML file is located: `docker-compose up -d`. It will build the webapi service using the provided Dockerfile, set up PostgreSQL, MongoDB, and RabbitMQ, and start the Cinemania program on `http://localhost:8000`.
